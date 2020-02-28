@@ -4,3 +4,4 @@ create table Parts (pid int,pname varchar(30),color varchar(30),constraint pk1 P
 insert into Parts values(20001,"Book","Red"), (20002,"Pen","Red"),(20003,"Pencile","Green"),(20004,"Mobile","Green"),(20005,"Charger","Black") ;
 create table Catalog (sid int,pid int,cost int,constraint fk Foreign Key(sid) references Supplier(sid), constraint fk1 Foreign Key(pid) references Parts(pid) ) ;
 insert into Catalog values(10001,20001,10), (10001,20002,10),(10001,20003,30),(10001,20004,10),(10001,20005,10),(10002,20001,10),(10002,20002,20),(10003,20003,30),(10004,20003,40) ;
+select distinct sid from Parts,Catalog where Catalog.pid=Parts.pid and (color="Green" or color="Red");
