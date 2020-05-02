@@ -1,9 +1,0 @@
-insert into Branch values('SBI_Chamrajpet','Bangalore',50000),('SBI_ResidencyRoad','Bangalore',10000),('SBI_ShivajiRoad','Bombay',20000),('SBI_ParliamentRoad','Dehli',10000),('SBI_Jantarmantar','Dehli',20000) ;
-insert into BankAccount values(1,'SBI_Chamrajpet',2000),(2,'SBI_ResidencyRoad',5000),(3,'SBI_ShivajiRoad',6000),(4,'SBI_ParliamentRoad',9000),(5,'SBI_Jantarmantar',8000),(6,'SBI_ShivajiRoad',4000),(8,'SBI_ResidencyRoad',4000),(9,'SBI_ParliamentRoad',3000),(10,'SBI_ResidencyRoad',5000),(11,'SBI_Jantarmantar',2000) ;
-insert into BankCustomer values('Avinash','Bull_Temple_Road','Bangalore'),('Dinesh','Bannergatta_Road','Bangalore'),('Mohan','NationalCollege_Road','Bangalore'),('Nikhil','Akbar_Road','Dehli'),('Ravi','Prithviraj_Road','Dehli') ;
-insert into Loan values(1,'SBI_Chamrajpet',1000),(2,'SBI_ResidencyRoad',2000),(3,'SBI_ShivajiRoad',3000),(4,'SBI_ParliamentRoad',4000),(5,'SBI_Jantarmantar',5000) ;
-
-
-
-
-
