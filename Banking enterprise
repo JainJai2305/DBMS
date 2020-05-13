@@ -54,6 +54,17 @@ insert into Loan values(
 select * from Loan;
 
 
+create table Borrower(
+loan_num int,
+customername varchar(30),
+FOREIGN KEY (customername) REFERENCES Loan(customername));
+FOREIGN KEY (loan_num) REFERENCES Loan(loan_num));
+  
+insert into Borrower values
+(1,"Diesh"),(2,"Ashish"),(3,"Shivaji"),(4,"Lily"),(5,"Marie");
+select * from Borrower;
+
+
 select C.customername 
 from Bank_Customer C
 where exists (
