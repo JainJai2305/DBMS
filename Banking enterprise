@@ -1,4 +1,5 @@
-
+create database BANKING_ENTERPRISE;
+use BANKING_ENTERPRISE;
 create table Branch(
 branch_name varchar(30),
 branch_city varchar(10),
@@ -6,9 +7,13 @@ assets real,
 PRIMARY KEY (branch_name));
 
 insert into Branch values(
-'SBI_Chamrajpet','Bangalore',50000),("SBI_ResidencyRoad","Bangalore",10000),
-("SBI_ShivajiRoad","Bonbay",20000),("SBI_ParliamentRoad","Delhi",10000),("SBI_Jantarmantar","Delhi",20000);
+'SBI_Chamrajpet','Bangalore',50000),
+("SBI_ResidencyRoad","Bangalore",10000),
+("SBI_ShivajiRoad","Bonbay",20000),
+("SBI_ParliamentRoad","Delhi",10000),
+("SBI_Jantarmantar","Delhi",20000);
 select * from Branch;
+
 
 create table Bank_account(
 acc_no int,
@@ -28,8 +33,10 @@ customercity varchar(30),
 primary key (customername));
 
 insert into Bank_Customer values("Avinash","Bull Temple Road","Bangalore"),
-("Dinesh","Bannergatta Road","Bangalore"),("Mohan","National College Road","Bangalore"),
-("Nikil","Akbar Road","Delhi"),("Ravi","Prithviraj Road","Delhi");
+("Dinesh","Bannergatta Road","Bangalore"),
+("Mohan","National College Road","Bangalore"),
+("Nikil","Akbar Road","Delhi"),
+("Ravi","Prithviraj Road","Delhi");
 
 create table Depositor(
 customername varchar(30),
@@ -54,33 +61,22 @@ insert into Loan values(
 select * from Loan;
 
 
-create table Borrower(
-loan_num int,
-customername varchar(30),
-FOREIGN KEY (customername) REFERENCES Loan(customername));
-FOREIGN KEY (loan_num) REFERENCES Loan(loan_num));
-  
-insert into Borrower values
-(1,"Diesh"),(2,"Ashish"),(3,"Shivaji"),(4,"Lily"),(5,"Marie");
-select * from Borrower;
-
-
 select C.customername 
 from Bank_Customer C
 where exists (
 				select D.customername, count(D.customername)
                 from Depositor D,Bank_account BA
                 where
-                D.acc_no = BA.acc_no AND C.customername = D.customername AND 			        				BA.branch_name='SBI_ResidencyRoad' 
+                D.acc_no = BA.acc_no AND C.customername = D.customername AND BA.branch_name='SBI_ResidencyRoad' 
                 group by D.customername
                 having count(D.customername) >=2);
                 
-select BC.customername from Bank_Customer BC
-where not exists(
-					select branch_name from Branch branch_city = 'Delhi'
-                    except
-                    select BA.branch_name from Depositor D , Bank_account BA
-                    where D.acc_no = BA.acc_no AND BC.customername = D.customername);
+select BC.customer_name from BankCustomer BC where not exists(
+	select branch_name from Branch where branch_city = 'Delhi'
+	and branch_name not in(
+    select BA.branch_name from Depositer D, BankAccount BA
+	where D.accno = BA.accno and BC.customer_name = D.customer_name)
+);
                     
 delete from Bank_account 
 where branch_name in (select branch_name 
